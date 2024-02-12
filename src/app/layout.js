@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Provider>
-          <MantineProvider>
+          <MantineProvider defaultColorScheme="dark">
             <Notifications />
             {/* <NavbarComponent session={session} /> */}
             {children}
