@@ -76,7 +76,7 @@ export default function UpdateComponent({ posts, categories, id, post }) {
 
     router.refresh();
 
-    router.push("/");
+    router.push("/admin");
   };
 
   useEffect(() => {

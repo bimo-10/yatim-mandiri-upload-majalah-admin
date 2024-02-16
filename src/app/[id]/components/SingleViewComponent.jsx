@@ -24,7 +24,7 @@ export default function SingleViewComponent({ post }) {
               width={200}
               height={200}
               alt={post.image}
-              className="w-full h-72"
+              className="w-full h-72 rounded-md"
             />
           </Card.Section>
 
@@ -54,12 +54,14 @@ export default function SingleViewComponent({ post }) {
             </Group>
           </Group>
 
-          <div
-            // dangerouslySetInnerHTML={{
-            //   __html: post.content,
-            // }}
-            dangerouslySetInnerHTML={createMarkup()}
-          />
+          <div className="overflow-auto">
+            <div
+              // dangerouslySetInnerHTML={{
+              //   __html: post.content,
+              // }}
+              dangerouslySetInnerHTML={createMarkup()}
+            />
+          </div>
         </Card>
       </section>
     </>

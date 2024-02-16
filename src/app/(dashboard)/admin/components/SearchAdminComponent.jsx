@@ -8,7 +8,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { MantineReactTable, useMantineReactTable } from "mantine-react-table";
 
 import "mantine-react-table/styles.css";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { IconEdit, IconEye, IconTrash } from "@tabler/icons-react";
 import { ModalsProvider, modals } from "@mantine/modals";
 
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
@@ -27,6 +27,7 @@ export default function SearchAdminComponent({ posts }) {
         id: "image",
         header: "Image",
         Cell: ({ renderedCellValue, row }) => {
+          // onClick: () => router.push(`/${row.id}`);
           return (
             <Image
               alt={row.original.title}
@@ -67,6 +68,7 @@ export default function SearchAdminComponent({ posts }) {
               dangerouslySetInnerHTML={{
                 __html: renderedCellValue.substring(0, 250) + "...",
               }}
+              // dangerouslySetInnerHTML={{ __html: renderedCellValue }}
               style={{ whiteSpace: "pre-wrap" }}
             />
           );
@@ -164,12 +166,12 @@ export default function SearchAdminComponent({ posts }) {
       variant: "filled",
       isDismissible: true,
     },
-    mantineTableBodyRowProps: ({ row }) => ({
-      onClick: () => router.push(`/${row.id}`),
-      sx: {
-        cursor: "pointer",
-      },
-    }),
+    // mantineTableBodyRowProps: ({ row }) => ({
+    //   onClick: () => router.push(`/${row.id}`),
+    //   sx: {
+    //     cursor: "pointer",
+    //   },
+    // }),
     renderRowActions: ({ row, table }) => (
       <Flex gap="md">
         <Tooltip label="Edit">
@@ -180,6 +182,11 @@ export default function SearchAdminComponent({ posts }) {
         <Tooltip label="Delete">
           <ActionIcon color="red" onClick={() => handleDelete(row.id)}>
             <IconTrash />
+          </ActionIcon>
+        </Tooltip>
+        <Tooltip label="View">
+          <ActionIcon onClick={() => router.push(`/${row.id}`)}>
+            <IconEye />
           </ActionIcon>
         </Tooltip>
       </Flex>

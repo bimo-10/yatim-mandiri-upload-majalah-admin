@@ -114,9 +114,9 @@ export async function PUT(req, context) {
       image: coverImage.name,
       pdf: filePdf.name,
 
-      viewCount: {
-        increment: 1,
-      },
+      // viewCount: {
+      //   increment: 1,
+      // },
     },
   });
 
