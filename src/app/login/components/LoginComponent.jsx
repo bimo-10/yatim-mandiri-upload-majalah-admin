@@ -130,15 +130,15 @@ export default function LoginComponent() {
             </Flex>
           </form>
         </Card>
-        {/* <Button
+        <Button
           my={"18px"}
           variant="gradient"
           gradient={{ from: "red", to: "orange" }}
-          onClick={() => router.push("/")}
+          onClick={() => router.push("/signup")}
           fullWidth
         >
-          Kembali ke halaman utama
-        </Button> */}
+          Sign Up
+        </Button>
       </Container>
     </>
   );

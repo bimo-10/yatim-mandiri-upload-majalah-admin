@@ -14,6 +14,9 @@ export async function GET(req, context) {
       id: true,
       name: true,
     },
+    include: {
+      posts: true,
+    },
   });
 
   if (!response) {

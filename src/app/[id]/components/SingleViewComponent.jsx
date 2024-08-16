@@ -60,6 +60,7 @@ export default function SingleViewComponent({ post }) {
               //   __html: post.content,
               // }}
               dangerouslySetInnerHTML={createMarkup()}
+              style={{ whiteSpace: "pre-wrap" }}
             />
           </div>
         </Card>

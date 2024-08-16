@@ -12,6 +12,7 @@ import { IconEdit, IconEye, IconTrash } from "@tabler/icons-react";
 import { ModalsProvider, modals } from "@mantine/modals";
 
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
+import { notifications } from "@mantine/notifications";
 
 export default function SearchAdminComponent({ posts }) {
   const [data, setData] = useState(posts);
@@ -141,6 +142,14 @@ export default function SearchAdminComponent({ posts }) {
       console.log(error);
     }
     router.refresh();
+    router.push("/admin");
+    notifications.show({
+      title: "Success",
+      message: "Login Success",
+      icon: <FaCheckCircle />,
+      color: "green",
+      autoClose: 4000,
+    });
   };
 
   // TABLE MANTINE
@@ -166,6 +175,12 @@ export default function SearchAdminComponent({ posts }) {
       variant: "filled",
       isDismissible: true,
     },
+    initialState: {
+      showSkeletons: data ? false : true,
+    },
+    // state: {
+    //   showSkeletons: false,
+    // },
     // mantineTableBodyRowProps: ({ row }) => ({
     //   onClick: () => router.push(`/${row.id}`),
     //   sx: {

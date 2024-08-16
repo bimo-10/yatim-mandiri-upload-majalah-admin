@@ -8,11 +8,14 @@ export default function UpdateCategoryComponent({ id, category }) {
   const router = useRouter();
   const { data } = category;
 
+  const [isLoading, setIsLoading] = useState(false);
+
   console.log(data);
 
   const [isCategory, setIsCategory] = useState(data.name);
 
   const handleUpdate = async () => {
+    setIsLoading(true);
     const response = await fetch(`/api/category/${id}`, {
       method: "PUT",
       body: JSON.stringify({
@@ -23,6 +26,8 @@ export default function UpdateCategoryComponent({ id, category }) {
 
     const data = await response.json();
     console.log(data);
+
+    setIsLoading(false);
 
     router.refresh();
     router.push("/category");
@@ -37,7 +42,9 @@ export default function UpdateCategoryComponent({ id, category }) {
             onChange={(e) => setIsCategory(e.target.value)}
             value={isCategory}
           />
-          <Button onClick={handleUpdate}>Update</Button>
+          <Button onClick={handleUpdate} loading={isLoading}>
+            Update
+          </Button>
         </Group>
       </Container>
     </>

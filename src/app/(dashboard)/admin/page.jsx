@@ -16,7 +16,7 @@ const getPosts = async () => {
   });
 
   const data = await res.json();
-  return data;
+  return data.data;
 };
 
 const getPostQuery = async (pageNum, pageSize) => {

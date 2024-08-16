@@ -17,7 +17,7 @@ const getPosts = async () => {
       cache: "no-store",
     });
     const data = await res.json();
-    return data;
+    return data.data;
   } catch (error) {
     console.log({ message: error.message });
   }
